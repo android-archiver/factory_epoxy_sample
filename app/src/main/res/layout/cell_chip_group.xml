@@ -20,6 +20,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 app:chipSpacing="8dp"/>
+
         </HorizontalScrollView>
+
     </RelativeLayout>
+
 </layout>

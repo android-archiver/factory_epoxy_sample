@@ -14,36 +14,45 @@ import hr.factory.databinding.CellChipGroupBinding
 import hr.factory.ui_models.ChipGroupCellData
 
 @EpoxyModelClass
-abstract class ChipGroupModel : DataBindingEpoxyModel() {
+abstract class ChipGroupppModel : DataBindingEpoxyModel() {
+
     @EpoxyAttribute
-    lateinit var chips: List<String>
+    lateinit var chops: List<String>
 
     override fun getDefaultLayout() = R.layout.cell_chip_group
 
     override fun setDataBindingVariables(binding: ViewDataBinding?) {
+
         (binding as? CellChipGroupBinding)?.apply {
             addChipsCells(this.chipGroup)
         }
     }
 
+    // add chips to chip group
     private fun addChipsCells(chipGroup: ChipGroup){
         chipGroup.removeAllViews()
+
         val inflater = LayoutInflater.from(chipGroup.context)
-        chips.forEachIndexed { index, label ->
-            val chip = inflater.inflate(R.layout.view_chip,chipGroup,false) as Chip
+
+        chops.forEachIndexed { index, label ->
+            val chip = inflater.inflate(R.layout.view_chip, chipGroup, false) as Chip
+
             chip.id = index
             chip.text = label
             chip.isAllCaps = true
             chip.isCheckable = false
+
             ViewCompat.setElevation(chip, 0.0f)
+
             chipGroup.addView(chip)
         }
     }
 }
 
 fun TypedEpoxyController<*>.addChipGroup(cell: ChipGroupCellData) {
-    chipGroup {
+    chipGrouppp {
         id("chipGroup")
-        chips(cell.chips)
+
+        chops(cell.chips)
     }
 }
